@@ -1,7 +1,30 @@
 <div class="user_detail">
     <h3><%= @user.name %>のページ</h3><br>
     <h3>メールアドレス: <%= @user.email %></h3>
+    <h3>投稿内容</h3>
+    <% @pictures.each do |p| %>
+    <%= p.content %>
+    <%= image_tag p.image.url %>
+    <% end %>
 </div>
   <div class="simple_button">
     <%= link_to '新規投稿へ', new_picture_path %>
   </div>
+
+<div class="left">
+  <h4>フォローリスト</h4>
+  <% @follow_users.each do |follow| %>
+  <ul>
+    <li><%=link_to follow.name, user_path(follow) %></li>
+  </ul>
+  <% end %>
+</div>
+
+<div class="right">
+  <h4>フォロワーリスト</h4>
+  <% @followed_users.each do |followed| %>
+  <ul>
+    <li><%= link_to followed.name, user_path(followed) %></li>
+  </ul>
+  <% end %>
+</div>

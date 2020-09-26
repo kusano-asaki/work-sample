@@ -1,7 +1,8 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
-    @pictures = Picture.all
+    # @pictures = Picture.all
+    @pictures = Picture.all.page(params[:page]).per(5)
   end
 
   def new

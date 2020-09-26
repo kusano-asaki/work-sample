@@ -18,4 +18,6 @@
     <%= link_to "削除する", picture_path(picture.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
   </div>
 </div>
+
 <% end %>
+<%= paginate @pictures %>
